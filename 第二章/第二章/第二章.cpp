@@ -1,8 +1,9 @@
 //#include<stdafx.h>
-#include<iostream>
+//#include<iostream>
 #include<stdio.h>
 #include<stdlib.h>
-using namespace std;
+#define_CRT_SECURE_NO_WARNINGS
+//using namespace std;
 
 
 //int main(){
@@ -150,19 +151,40 @@ using namespace std;
 //	double l;
 //	l = 63240 * lightyear;
 //	return l;
+////}
+//void love(int, int);
+//int main(){
+//	int h, m;
+//	cout << "输入小时：";
+//	cin >> h;
+//	cout << "输入分钟";
+//	cin >> m;
+//	love(h, m);
+//	system("pause");
+//	return 0;
 //}
-void love(int, int);
-int main(){
-	int h, m;
-	cout << "输入小时：";
-	cin >> h;
-	cout << "输入分钟";
-	cin >> m;
-	love(h, m);
-	system("pause");
-	return 0;
-}
-void love(int h, int m){
-	cout << "time" << h << ":" << m;
-
+//void love(int h, int m){
+//	cout << "time" << h << ":" << m;
+//
+//}
+int main()
+{
+	int a[] = { 2, 5, 3, 8, 4, 3, 25, 45, 65 };//d定义一个一维数组
+	int i = 0;
+	int left = 0;
+	int right = sizeof(a) / sizeof(a[0]);
+	printf("输入想要查找的数字：");
+		scanf("%d", &a);
+	while (Find(left, right, i, a) != -1)
+	{
+		printf("找到了，下标是：%d\n"，Find(left, right, i, a));
+		break;
+	}
+	while (Find(left, right, i, a) == -1)
+	{
+		printf("没找到，目标不存在\n")
+			break;
+		system("pause");
+		return 0;
+	}
 }
