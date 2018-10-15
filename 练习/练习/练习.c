@@ -1,10 +1,10 @@
 //查找一个字符数组的长度
-//#define _CRT_SECURE_NO_WARNINGS
-//#include<stdio.h>
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
 #include<stdlib.h>
-//#include<CoreWindow.h>
-//#include<string.h>
-
+#include<CoreWindow.h>
+#include<string.h>
+#include<time.h>
 //int Strlen(char*str)
 //{
 //	int count = 0;
@@ -241,22 +241,77 @@ int main()
 //	system("pause");
 //	return 0;
 //}
-void reverse_string(char*str)
-{
-	if (*str == '\0')
-	{
-		printf("%c", *str);
-	}
-	else
-	{
-		reverse_string(++str);
-		printf("%c", *(--str));
-		system("pause");
-	}
-}
-int main()
-{
-	char st[] = "hfgfkiotyrvg";
-	reverse_string(st);
-	return 0;
-}
+//void reverse_string(char*str)
+//{
+//	if (*str == '\0')
+//	{
+//		printf("%c", *str);
+//	}
+//	else
+//	{
+//		reverse_string(++str);
+//		printf("%c", *(--str));
+//		system("pause");
+//	}
+//}
+//int main()
+//{
+//	char st[] = "hfgfkiotyrvg";
+//	reverse_string(st);
+//	return 0;
+//}
+//int memu(){
+//	printf("**********************************\n");
+//	printf(" 开始游戏  结束游戏\n");
+//	printf("**************************\n");
+//	printf("请输入你的选择:\n");
+//	int choice = 0;
+//	scanf("%d", &choice);
+//	return choice;
+//}
+//void game(){
+//	int result = rand()%100 + 1;
+//	while (1)
+//	{
+//		printf("请输入一个数字：");
+//		int num = 0;
+//		scanf("%d", &num);
+//		if (num < result)
+//		{
+//			printf("低了\n");
+//		}
+//		else if (num>result)
+//		{
+//			printf("高了\n");
+//		}
+//		else
+//		{
+//			printf("恭喜你，答对了\n");
+//
+//			break;
+//		}
+//	}
+//}
+//int main()
+//{
+//	srand(time(NULL));
+//	while (1)
+//	{
+//		int choice = memu();
+//		if (choice == 1)
+//		{
+//			game();
+//		}
+//		else if (choice == 0)
+//		{
+//			break;
+//		}
+//		else
+//		{
+//			printf("你输入的数字有误，请重新输入\n");
+//		}
+//	}
+//	system("pause");
+//	return 0;
+//
+//}
