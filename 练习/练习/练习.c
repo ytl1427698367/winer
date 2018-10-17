@@ -315,9 +315,284 @@ int main()
 //	return 0;
 //
 //}
-void Swape(int*x, int*y)
-{
-	int temp = *x;
-	*x = *y;
-	*y = temp;
+//         //实现一个数组的排序问题
+//void Swape(int*x, int*y)
+//{
+//	int temp = *x;
+//	*x = *y;
+//	*y = temp;
+//}
+//void bobblesort(int arr[], int size)
+//{
+//	int board = 0;          //定义一个边界
+//	for (; board < size; ++board)
+//	{
+//		int cur = size - 1;
+//		for (; cur>board; cur--)
+//		{
+//			if (arr[cur]<arr[cur-1])
+//			{
+//				Swape(&arr[cur], &arr[cur - 1]);
+//			}
+//		}	
+//				
+//	}
+//
+//}
+//int main()
+//{
+//	int arr[] = { 9, 5, 6, 3, 7, 56, 2 };
+//	int lep = sizeof(arr) / sizeof(arr[0]);
+//	bobblesort(arr, lep);
+//	for (int i = 0; i < lep; i++)
+//	{
+//		printf("%d ", arr[i]);
+//
+//	}
+//	system("pause");
+//	return 0;
+//}
+
+//写一个函数返回参数二进制中 1 的个数
+//
+//int count_one_bits(unsigned int value)
+//{
+//	int count = 0;
+//	while (value)
+//	{
+//		if (value % 2 == 1)
+//		{
+//			count++;
+//		}
+//		value = value / 2;
+//	}
+//	return count;
+//}
+//int main()
+//{
+//	printf("%d", count_one_bits(15));
+//	system("pause");
+//}
+//
+//获取一个数二进制序列中所有的偶数位和奇数位，分别输出二进制序列。
+//
+//int two_system(int num)
+//{
+//	if (num >1)
+//	{
+//		two_system(num/2);
+//	
+//	printf("%d", num % 2);
+//
+//		
+//		
+//
+//	}
+//}
+//int main()
+//{
+//	printf("%d", two_system(15));
+//	system("pause");
+//}
+// 输出一个整数的每一位。
+//int count(int n)
+//{
+//	if (n <= 9)
+//	{
+//		printf("%d", n);
+//	}
+//	else
+//	{
+//		count(n / 10);
+//		printf("%d", n % 10);
+//      
+//	}
+//	}
+//int main()
+//{
+//	int num=0;
+//	printf("请输入一个数");
+//	scanf("%d", &num);
+//	count(num);
+//	system("pause");
+//	return 0;
+//}
+
+//int main()
+//{
+//	int num = 0, i = 0;
+//	scanf("%d", &num);
+//	printf("奇数序列为：");
+//	for (i = 31; i >= 0; i -= 2)  //也是控制32次（每个整型数按32位来算），只是从31位开始移动  
+//	{
+//		printf("%d ", (num >> i) & 1);  //第一次向右移动31位和1与得到第一位情况，每次变化2位，即可得到奇数位情况  
+//	}
+//	printf("\n");
+//	printf("偶数序列为：");
+//	for (i = 30; i >= 0; i -= 2)  //向右移动30位，再与1所得结果是原来数字的第二位，再移28位...  
+//	{
+//		printf("%d ", (num >> i) & 1);  
+//	}
+//	printf("\n");
+//	system("pause");
+//	return 0;
+//}
+#define ROW 3
+#define COL 3
+char g_chess_board[ROW][COL];//定义二维数组来表示棋盘；
+void init()
+{//对棋盘进行初始化；
+	for (int row = 0; row <= ROW; ++row)
+	{
+		for (int col = 0; col <= COL; ++col)
+		{
+			g_chess_board[row][col] = " ";
+		}
+	}
 }
+void print()
+{
+//先打印一下棋盘；
+	for (int row = 0; row <= ROW; ++row)
+	{
+		printf("| %c | %c | %c |\n", g_chess_board[row][0],
+			g_chess_board[row][1], g_chess_board[row][2]);
+		if (row != ROW - 1)
+		{
+			printf("|---|---|---|\n");
+		}
+
+	}
+	}
+void playear()
+{
+	while (1)
+	{
+		//玩家落子，检查游戏是否结束；
+		//1提示落子；
+		printf("请玩家落子,坐标为：row，col");
+		//2.读取玩家的输入；
+		int row = 0, col = 0;
+		scanf("%d %d", &row, &col);
+		//3.对玩家落子进行判断，看其是否正确
+		if (row <= ROW || col <= COL)
+		{
+			g_chess_board[row][col] = 'x';
+		}
+		else
+		{
+			printf("玩家落子不正确，请重新落子");
+			break;
+		}
+	}
+	//检查游戏是否结束；
+	char checkwinner()
+	{}
+	void computermove()
+	{
+		printf("电脑落子\n");
+		int row = 0;
+		int col = 0;
+		while (1){
+			row = rand() % ROW;
+			col = rand() % COL;
+			if (g_chess_board[row][col] == ' ')
+			{
+				g_chess_board[row][col] = 'o';
+				break;
+			}
+		}
+	}
+	//满了返回1，没有返回0
+	int isfull()
+	{
+		for (int row = 0; row < ROW; ++row)
+		{
+			for (int col = 0; col < COL; ++col)
+			{
+				if (g_chess_board[row][col] = ' '
+				{
+					return 0;
+				}
+			}
+		}
+		return 1;
+	}
+	//检查游戏是否结束；
+	char checkwinner()
+	{
+		//检查行是否一致
+		for (int row = 0; row < ROW; ++row)
+		{
+			if (g_chess_board[row][0] == g_chess_board[row][1] &&
+				g_chess_board[row][0] == g_chess_board[row][2] &&
+				g_chess_board[row][0]) != ' ')
+			{
+					return  g_chess_board[row][0]);
+				}
+		}
+		//检查列是否一致
+		for (int col = 0; col < COL; ++col)
+		{
+			if (g_chess_board[0][col] == g_chess_board[1][col] &&
+				g_chess_board[0][col] == g_chess_board[2][col] &&
+				g_chess_board[0][col]) != ' ')
+			{
+				return  g_chess_board[0][col]);
+			}
+		}
+		//检查对角线
+		if (g_chess_board[0][0] == g_chess_board[1][1] &&
+			g_chess_board[0][0] == g_chess_board[2][2] &&
+			g_chess_board[0][0]) != ' ')
+		{
+			return  g_chess_board[0][0]);
+		}
+		if (g_chess_board[0][2] == g_chess_board[1][1] &&
+			g_chess_board[0][2] == g_chess_board[2][0] &&
+			g_chess_board[0][2]) != ' ')
+		{
+			return  g_chess_board[0][2]);
+		}
+		//检查和棋
+		if (isfull()){
+			return 'q';
+		}
+		return ' ';
+	}
+	int main()
+	{
+		char winner = ' ';
+		init();
+		while (1){
+			printf();
+			player();
+			winner = checkwinner();
+			if (winner != ' ')
+			{
+				//游戏结束	
+				break;
+			}
+			computermove();
+			winner = checkwinner();
+			if (winner != ' ');
+			//游戏结束
+			break;
+		}
+	}
+	if (winner == 'x')
+	{
+		printf("玩家获胜\n");
+	}
+	else if (winner == 'o')
+	{
+		printf("电脑获胜\n");
+	else if (winner == 'q')
+	{
+		printf("和棋\n");
+	}
+	}
+}
+}
+}				
+
