@@ -5,6 +5,8 @@
 #include<CoreWindow.h>
 #include<string.h>
 #include<time.h>
+#include<math.h>
+#include<conio.h>
 //int Strlen(char*str)
 //{
 //	int count = 0;
@@ -437,8 +439,11 @@ int main()
 //	system("pause");
 //	return 0;
 //}
-#define ROW 3
-#define COL 3
+#define ROW 5
+#define COL 5
+
+
+
 char g_chess_board[ROW][COL];//定义二维数组来表示棋盘；
 void init()
 {//对棋盘进行初始化；
@@ -446,20 +451,21 @@ void init()
 	{
 		for (int col = 0; col <= COL; ++col)
 		{
-			g_chess_board[row][col] = " ";
+			g_chess_board[row][col] =' ';
 		}
 	}
 }
 void print()
 {
 //先打印一下棋盘；
-	for (int row = 0; row <= ROW; ++row)
+	for (int row = 0; row <ROW; ++row)
 	{
-		printf("| %c | %c | %c |\n", g_chess_board[row][0],
-			g_chess_board[row][1], g_chess_board[row][2]);
-		if (row != ROW - 1)
+		printf("| %c | %c | %c | %c | %c |\n", g_chess_board[row][0],
+			g_chess_board[row][1], g_chess_board[row][2], 
+			g_chess_board[row][3],g_chess_board[row][4]);
+		if (row != ROW -1)
 		{
-			printf("|---|---|---|\n");
+			printf("|---|---|---|---|---|\n");
 		}
 
 	}
@@ -470,24 +476,33 @@ void playear()
 	{
 		//玩家落子，检查游戏是否结束；
 		//1提示落子；
-		printf("请玩家落子,坐标为：row，col");
+		printf("请玩家落子,坐标为：row，col\n");
 		//2.读取玩家的输入；
-		int row = 0, col = 0;
+		int row = 0;
+		int col = 0;
 		scanf("%d %d", &row, &col);
 		//3.对玩家落子进行判断，看其是否正确
-		if (row <= ROW || col <= COL)
-		{
-			g_chess_board[row][col] = 'x';
-		}
-		else
+		if (row < 0 || row >= ROW || col < 0 || col >= COL)
 		{
 			printf("玩家落子不正确，请重新落子");
-			break;
+			continue;
 		}
+		if (g_chess_board[row][col] != ' ')
+		{
+			printf("当前位置有子，重新输入");
+			continue;
+		}
+		else if (g_chess_board[row][col] == ' ')
+		{
+			g_chess_board[row][col] = 'x';
+	}	
+		break;
+
 	}
-	//检查游戏是否结束；
-	char checkwinner()
-	{}
+}
+
+
+
 	void computermove()
 	{
 		printf("电脑落子\n");
@@ -510,7 +525,7 @@ void playear()
 		{
 			for (int col = 0; col < COL; ++col)
 			{
-				if (g_chess_board[row][col] = ' '
+				if (g_chess_board[row][col]== ' ')
 				{
 					return 0;
 				}
@@ -526,9 +541,11 @@ void playear()
 		{
 			if (g_chess_board[row][0] == g_chess_board[row][1] &&
 				g_chess_board[row][0] == g_chess_board[row][2] &&
-				g_chess_board[row][0]) != ' ')
+				g_chess_board[row][0] == g_chess_board[row][3] &&
+				g_chess_board[row][0] == g_chess_board[row][4] &&
+				g_chess_board[row][4] != ' ')
 			{
-					return  g_chess_board[row][0]);
+					return  g_chess_board[row][0];
 				}
 		}
 		//检查列是否一致
@@ -536,63 +553,75 @@ void playear()
 		{
 			if (g_chess_board[0][col] == g_chess_board[1][col] &&
 				g_chess_board[0][col] == g_chess_board[2][col] &&
-				g_chess_board[0][col]) != ' ')
+				g_chess_board[0][col] == g_chess_board[3][col] &&
+				g_chess_board[0][col] == g_chess_board[4][col] &&
+				g_chess_board[0][col] != ' ')
 			{
-				return  g_chess_board[0][col]);
+				return  g_chess_board[0][col];
 			}
 		}
 		//检查对角线
 		if (g_chess_board[0][0] == g_chess_board[1][1] &&
-			g_chess_board[0][0] == g_chess_board[2][2] &&
-			g_chess_board[0][0]) != ' ')
+			g_chess_board[0][0] == g_chess_board[2][2] && 
+			g_chess_board[0][0] == g_chess_board[3][3] &&
+			g_chess_board[0][0] == g_chess_board[4][4] &&
+			g_chess_board[0][0] != ' ')
 		{
-			return  g_chess_board[0][0]);
+			return  g_chess_board[0][0];
 		}
-		if (g_chess_board[0][2] == g_chess_board[1][1] &&
-			g_chess_board[0][2] == g_chess_board[2][0] &&
-			g_chess_board[0][2]) != ' ')
+		if (g_chess_board[0][4] == g_chess_board[1][3] &&
+			g_chess_board[0][4] == g_chess_board[2][2] && 
+			g_chess_board[0][4] == g_chess_board[3][1] &&
+			g_chess_board[0][4] == g_chess_board[4][0] &&
+			g_chess_board[0][4] != ' ')
 		{
-			return  g_chess_board[0][2]);
+			return  g_chess_board[0][4];
 		}
 		//检查和棋
-		if (isfull()){
+		if (isfull())
+		{
 			return 'q';
 		}
 		return ' ';
 	}
 	int main()
 	{
+		
+		
+		
 		char winner = ' ';
 		init();
-		while (1){
-			printf();
-			player();
+		while (1)
+		{
+			print();
+			playear();
+		
+			computermove();
 			winner = checkwinner();
 			if (winner != ' ')
 			{
-				//游戏结束	
+				//游戏结束
 				break;
 			}
-			computermove();
-			winner = checkwinner();
-			if (winner != ' ');
-			//游戏结束
-			break;
+			system("cls");
 		}
+		system("cls");
+		print();
+		if (winner == 'x')
+		{
+			printf("玩家获胜\n");
+		}
+		else if (winner == 'o')
+		{
+			printf("电脑获胜\n");
+		}
+		else if (winner == 'q')
+		{
+			printf("和棋\n");
+		}
+		system("pause");
 	}
-	if (winner == 'x')
-	{
-		printf("玩家获胜\n");
-	}
-	else if (winner == 'o')
-	{
-		printf("电脑获胜\n");
-	else if (winner == 'q')
-	{
-		printf("和棋\n");
-	}
-	}
-}
-}
-}				
+
+
+				
 
