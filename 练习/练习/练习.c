@@ -355,6 +355,32 @@ int main()
 //	return 0;
 //}
 
+//比较两个整数二进制中，有多少个位不同；
+//int two_bits(int n, int m)
+//{
+//	int count = 0;
+//	int x = n^m;
+//	while (x != 0)
+//	{
+//		if ((x & 1)== 1)
+//		{
+//		count++;
+//		}
+//		x=x >>1;
+//	}
+//		return count;
+//	
+//}
+//int main()
+//{
+//	printf("请输入两个数num1和num2");
+//	int num1 = 0, num2 = 0;
+//	scanf("%d %d", &num1,&num2);
+//		printf("%d %d", two_bits(num1, num2));
+//		system("pause");
+//				return 0;
+//}
+	
 //写一个函数返回参数二进制中 1 的个数
 
 //int count_one_bits(unsigned int value)
@@ -438,7 +464,7 @@ int main()
 //	printf("\n");
 //	system("pause");
 //	return 0;
-//}
+////}
 //#define ROW 5
 //#define COL 5
 //
@@ -622,7 +648,7 @@ int main()
 //		system("pause");
 //	}
 //
-int count = 0;
+
 
 void er(int n)
 {
@@ -630,15 +656,12 @@ void er(int n)
 		printf("%d", n);
 		return ;
 
-	}er(n / 2);count++;
+	}er(n / 2);
 	  
 		
-    // printf("%d", n % 2);//输出的是偶数列
-		
-	//}
-	//else{
-		printf("%d\n", n % 2);
-	//}
+  
+		printf("%d", n % 2);
+	
 }
 int main()
 {
@@ -650,6 +673,86 @@ int main()
 	return 0;
 
 }
-
-				
-
+//定义地图
+//#define mine_count 10
+//#define  ROW 10
+//#define  COL 10
+//int menu(){
+//	printf("  1开始游戏 \n ");
+//	printf("0结束游戏");
+//	printf("请输入你的选择");
+//	int num;
+//	scanf("%d", &num);
+//	if (num = 1)
+//	{
+//		return 1;
+//	}
+//	else if (num == 0){
+//		return 0;
+//	}
+//	printf("用户选择有误，请重新选择");
+//
+//
+//}
+//
+//char mine_map[ROW + 2][COL+2];
+//char show_map[ROW + 2][COL + 2];
+//void init()
+//{
+//	for (int row = 0; row < ROW + 2; row++)
+//	{
+//		for (int col = 0; col < COL + 2; col++)
+//		{
+//			char mine_map[ROW + 2][COL + 2] = '0';//0表示不是地雷，
+//			char show_map[ROW + 2][COL + 2] = '1';//1表示是地雷
+//		}
+//	}
+//}
+//void print()//先打印mine-map
+//{
+//	for (row; row < ROW + 2; row++)
+//	{
+//		printf("%d", char mine_map[ROW + 2][COL+2])
+//	}
+//	for (col; col < COL + 2; col++)
+//	{
+//		printf("%d", char mine_map[ROW + 2][COL+2])
+//	}
+//}
+//int not_mine_count = 0;
+////设置雷阵
+//meset(mine_map, '0', (ROW + 2)*(COL + 2));
+//meset(show_map), '*', (ROW + 2)*（COL + 2));
+//}
+//void displaymap(char map[ROW + 2][COL + 2])
+//{
+//}
+////提示用户输入坐标
+//while (1)
+//{
+//	int row = 0;
+//	int col = 0;
+//
+//	printf("请你输入一个坐标");
+//	scanf("%d%d", &row, &col);
+//
+//if (row<0 || row>ROW  || col<0 || col>COL)
+//{
+//	printf("你输入的不正确，请重新输入");
+//	continue;
+//}
+//}
+//if (mine_map[ROW ][COL ] = '1')
+//{
+//	printf("游戏结束\n");
+//	break;
+//}
+//    ++not_mine_count;
+//
+//if (not_mine_count==ROW*COL-mine_count){
+//	printf("扫雷结束\n");
+//	displaymap(mine_map);
+//	break;		
+//}
+// //如果扫雷没有结束，则要统计当前位置周围雷的个数
+//						
