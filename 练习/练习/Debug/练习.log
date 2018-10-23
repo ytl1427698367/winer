@@ -1,4 +1,4 @@
-﻿生成启动时间为 2018/10/22 17:21:04。
+﻿生成启动时间为 2018/10/23 22:42:57。
      1>项目“C:\c\练习\练习\练习.vcxproj”在节点 2 上(Build 个目标)。
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TC /analyze- /errorReport:prompt "练习.c"
@@ -9,4 +9,4 @@
 
 生成失败。
 
-已用时间 00:00:00.15
+已用时间 00:00:01.08

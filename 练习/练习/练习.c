@@ -2,6 +2,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<time.h>
+#include<cnoio.h>
 //int Strlen(char*str)
 //{
 //	int count = 0;
@@ -458,189 +459,189 @@ int main()
 //	system("pause");
 //	return 0;
 //}
-//#define ROW 5
-//#define COL 5
-//
-//
-//
-//char g_chess_board[ROW][COL];//定义二维数组来表示棋盘；
-//void init()
-//{//对棋盘进行初始化；
-//	for (int row = 0; row <= ROW; ++row)
-//	{
-//		for (int col = 0; col <= COL; ++col)
-//		{
-//			g_chess_board[row][col] =' ';
-//		}
-//	}
-//}
-//void print()
-//{
-////先打印一下棋盘；
-//	for (int row = 0; row <ROW; ++row)
-//	{
-//		printf("| %c | %c | %c | %c | %c |\n", g_chess_board[row][0],
-//			g_chess_board[row][1], g_chess_board[row][2], 
-//			g_chess_board[row][3],g_chess_board[row][4]);
-//		if (row != ROW -1)
-//		{
-//			printf("|---|---|---|---|---|\n");
-//		}
-//
-//	}
-//	}
-//void playear()
-//{
-//	while (1)
-//	{
-//		//玩家落子，检查游戏是否结束；
-//		//1提示落子；
-//		printf("请玩家落子,坐标为：row，col\n");
-//		//2.读取玩家的输入；
-//		int row = 0;
-//		int col = 0;
-//		scanf("%d %d", &row, &col);
-//		//3.对玩家落子进行判断，看其是否正确
-//		if (row < 0 || row >= ROW || col < 0 || col >= COL)
-//		{
-//			printf("玩家落子不正确，请重新落子");
-//			continue;
-//		}
-//		if (g_chess_board[row][col] != ' ')
-//		{
-//			printf("当前位置有子，重新输入");
-//			continue;
-//		}
-//		else if (g_chess_board[row][col] == ' ')
-//		{
-//			g_chess_board[row][col] = 'x';
-//	}	
-//		break;
-//
-//	}
-//}
-//
-//
-//
-//	void computermove()
-//	{
-//		printf("电脑落子\n");
-//		int row = 0;
-//		int col = 0;
-//		while (1){
-//			row = rand() % ROW;
-//			col = rand() % COL;
-//			if (g_chess_board[row][col] == ' ')
-//			{
-//				g_chess_board[row][col] = 'o';
-//				break;
-//			}
-//		}
-//	}
-//	//满了返回1，没有返回0
-//	int isfull()
-//	{
-//		for (int row = 0; row < ROW; ++row)
-//		{
-//			for (int col = 0; col < COL; ++col)
-//			{
-//				if (g_chess_board[row][col]== ' ')
-//				{
-//					return 0;
-//				}
-//			}
-//		}
-//		return 1;
-//	}
-//	//检查游戏是否结束；
-//	char checkwinner()
-//	{
-//		//检查行是否一致
-//		for (int row = 0; row < ROW; ++row)
-//		{
-//			if (g_chess_board[row][0] == g_chess_board[row][1] &&
-//				g_chess_board[row][0] == g_chess_board[row][2] &&
-//				g_chess_board[row][0] == g_chess_board[row][3] &&
-//				g_chess_board[row][0] == g_chess_board[row][4] &&
-//				g_chess_board[row][4] != ' ')
-//			{
-//					return  g_chess_board[row][0];
-//				}
-//		}
-//		//检查列是否一致
-//		for (int col = 0; col < COL; ++col)
-//		{
-//			if (g_chess_board[0][col] == g_chess_board[1][col] &&
-//				g_chess_board[0][col] == g_chess_board[2][col] &&
-//				g_chess_board[0][col] == g_chess_board[3][col] &&
-//				g_chess_board[0][col] == g_chess_board[4][col] &&
-//				g_chess_board[0][col] != ' ')
-//			{
-//				return  g_chess_board[0][col];
-//			}
-//		}
-//		//检查对角线
-//		if (g_chess_board[0][0] == g_chess_board[1][1] &&
-//			g_chess_board[0][0] == g_chess_board[2][2] && 
-//			g_chess_board[0][0] == g_chess_board[3][3] &&
-//			g_chess_board[0][0] == g_chess_board[4][4] &&
-//			g_chess_board[0][0] != ' ')
-//		{
-//			return  g_chess_board[0][0];
-//		}
-//		if (g_chess_board[0][4] == g_chess_board[1][3] &&
-//			g_chess_board[0][4] == g_chess_board[2][2] && 
-//			g_chess_board[0][4] == g_chess_board[3][1] &&
-//			g_chess_board[0][4] == g_chess_board[4][0] &&
-//			g_chess_board[0][4] != ' ')
-//		{
-//			return  g_chess_board[0][4];
-//		}
-//		//检查和棋
-//		if (isfull())
-//		{
-//			return 'q';
-//		}
-//		return ' ';
-//	}
-//	int main()
-//	{
-//		
-//		
-//		
-//		char winner = ' ';
-//		init();
-//		while (1)
-//		{
-//			print();
-//			playear();
-//		
-//			computermove();
-//			winner = checkwinner();
-//			if (winner != ' ')
-//			{
-//				//游戏结束
-//				break;
-//			}
-//			system("cls");
-//		}
-//		system("cls");
-//		print();
-//		if (winner == 'x')
-//		{
-//			printf("玩家获胜\n");
-//		}
-//		else if (winner == 'o')
-//		{
-//			printf("电脑获胜\n");
-//		}
-//		else if (winner == 'q')
-//		{
-//			printf("和棋\n");
-//		}
-//		system("pause");
-//	}
-//
+#define ROW 5
+#define COL 5
+
+
+
+char g_chess_board[ROW][COL];//定义二维数组来表示棋盘；
+void init()
+{//对棋盘进行初始化；
+	for (int row = 0; row <= ROW; ++row)
+	{
+		for (int col = 0; col <= COL; ++col)
+		{
+			g_chess_board[row][col] =' ';
+		}
+	}
+}
+void print()
+{
+//先打印一下棋盘；
+	for (int row = 0; row <ROW; ++row)
+	{
+		printf("| %c | %c | %c | %c | %c |\n", g_chess_board[row][0],
+			g_chess_board[row][1], g_chess_board[row][2], 
+			g_chess_board[row][3],g_chess_board[row][4]);
+		if (row != ROW -1)
+		{
+			printf("|---|---|---|---|---|\n");
+		}
+
+	}
+	}
+void playear()
+{
+	while (1)
+	{
+		//玩家落子，检查游戏是否结束；
+		//1提示落子；
+		printf("请玩家落子,坐标为：row，col\n");
+		//2.读取玩家的输入；
+		int row = 0;
+		int col = 0;
+		scanf("%d %d", &row, &col);
+		//3.对玩家落子进行判断，看其是否正确
+		if (row < 0 || row >= ROW || col < 0 || col >= COL)
+		{
+			printf("玩家落子不正确，请重新落子");
+			continue;
+		}
+		if (g_chess_board[row][col] != ' ')
+		{
+			printf("当前位置有子，重新输入");
+			continue;
+		}
+		else if (g_chess_board[row][col] == ' ')
+		{
+			g_chess_board[row][col] = 'x';
+	}	
+		break;
+
+	}
+}
+
+
+
+	void computermove()
+	{
+		printf("电脑落子\n");
+		int row = 0;
+		int col = 0;
+		while (1){
+			row = rand() % ROW;
+			col = rand() % COL;
+			if (g_chess_board[row][col] == ' ')
+			{
+				g_chess_board[row][col] = 'o';
+				break;
+			}
+		}
+	}
+	//满了返回1，没有返回0
+	int isfull()
+	{
+		for (int row = 0; row < ROW; ++row)
+		{
+			for (int col = 0; col < COL; ++col)
+			{
+				if (g_chess_board[row][col]== ' ')
+				{
+					return 0;
+				}
+			}
+		}
+		return 1;
+	}
+	//检查游戏是否结束；
+	char checkwinner()
+	{
+		//检查行是否一致
+		for (int row = 0; row < ROW; ++row)
+		{
+			if (g_chess_board[row][0] == g_chess_board[row][1] &&
+				g_chess_board[row][0] == g_chess_board[row][2] &&
+				g_chess_board[row][0] == g_chess_board[row][3] &&
+				g_chess_board[row][0] == g_chess_board[row][4] &&
+				g_chess_board[row][4] != ' ')
+			{
+					return  g_chess_board[row][0];
+				}
+		}
+		//检查列是否一致
+		for (int col = 0; col < COL; ++col)
+		{
+			if (g_chess_board[0][col] == g_chess_board[1][col] &&
+				g_chess_board[0][col] == g_chess_board[2][col] &&
+				g_chess_board[0][col] == g_chess_board[3][col] &&
+				g_chess_board[0][col] == g_chess_board[4][col] &&
+				g_chess_board[0][col] != ' ')
+			{
+				return  g_chess_board[0][col];
+			}
+		}
+		//检查对角线
+		if (g_chess_board[0][0] == g_chess_board[1][1] &&
+			g_chess_board[0][0] == g_chess_board[2][2] && 
+			g_chess_board[0][0] == g_chess_board[3][3] &&
+			g_chess_board[0][0] == g_chess_board[4][4] &&
+			g_chess_board[0][0] != ' ')
+		{
+			return  g_chess_board[0][0];
+		}
+		if (g_chess_board[0][4] == g_chess_board[1][3] &&
+			g_chess_board[0][4] == g_chess_board[2][2] && 
+			g_chess_board[0][4] == g_chess_board[3][1] &&
+			g_chess_board[0][4] == g_chess_board[4][0] &&
+			g_chess_board[0][4] != ' ')
+		{
+			return  g_chess_board[0][4];
+		}
+		//检查和棋
+		if (isfull())
+		{
+			return 'q';
+		}
+		return ' ';
+	}
+	int main()
+	{
+		
+		
+		
+		char winner = ' ';
+		init();
+		while (1)
+		{
+			print();
+			playear();
+		
+			computermove();
+			winner = checkwinner();
+			if (winner != ' ')
+			{
+				//游戏结束
+				break;
+			}
+			system("cls");
+		}
+		system("cls");
+		print();
+		if (winner == 'x')
+		{
+			printf("玩家获胜\n");
+		}
+		else if (winner == 'o')
+		{
+			printf("电脑获胜\n");
+		}
+		else if (winner == 'q')
+		{
+			printf("和棋\n");
+		}
+		system("pause");
+	}
+
 //void er(int n)
 //{
 //	if (n < 2){
@@ -662,242 +663,5 @@ int main()
 //	 er(num);
 //	 system("pause");
 //	return 0;
-
+//
 //}
-//定义地图
-#define mine_count 10
-#define  ROW 10
-#define  COL 10
-char mine_map[ROW + 2][COL + 2];//地图初始化，有雷
-char show_map[ROW + 2][COL + 2];
-int menu(){
-	printf("********1开始游戏******* \n ");
-	printf("********0结束游戏*******\n");
-	printf("请输入你的选择");
-
-	int num;
-	while (1)
-	{
-
-		scanf("%d", &num);
-		if (num == 1)
-		{
-			return 1;
-		}
-		else if (num == 0){
-			return 0;
-		}
-		printf("用户选择有误，请重新选择");
-	}
-
-}
-void init()
-{
-	int row;
-	int col;
-	for ( row = 0; row < ROW + 2; row++)
-	{
-		for (col = 0; col < COL + 2; col++)
-		{
-			 mine_map[row][col] = '0';
-		//0表示不是地雷，
-		 show_map[row][col] = '0';
-		//*表示是地雷
-		}
-	}
-}
-void PrtMap(int n){//如果输出show n=1；如果输出mine n=0
-	int row;
-	int col;
-	//先打印第一行
-	for (col = 0; col <= COL; col++){
-		printf("%02d ", col);
-	}
-	printf("\n");
-	//在第一行下面答应横线
-	for (col = 0; col <= COL; col++){
-		printf("---");
-	}
-	printf("\n");
-	for (row = 1; row <= ROW; row++){
-		//每一行第一个为序号
-		printf("%02d| ", row);
-		for (col = 1; col <= COL; col++){
-			if (n == 1){
-				printf("%c  ", show_map[row][col]);
-			}
-			if (n == 0){
-				printf("%c  ", mine_map[row][col]);
-			}
-		}
-		printf("\n");
-	}
-}
-void PutMine(){
-	//埋雷
-	for (int count = 0; count < mine_count; count++){
-		int row = rand() % ROW + 1;
-		int col = rand() % COL + 1;
-		while (mine_map[row][col] == '*'){//如果重复
-			row = rand() % ROW + 1;
-			col = rand() % COL + 1;
-		}
-		mine_map[row][col] = '*';
-	}
-}
-int not_mine_count = 0;//计算不是雷的个数
-//如果扫雷没有结束，则要统计当前位置周围雷的个数
-void updateshowmap(int row, int col)
-{
-	int mine = 0;
-	//统计周围雷的数目
-	for (int rowl = row - 1; rowl < row + 2; rowl++){
-		for (int coll = col - 1; coll < col + 2; coll++){
-			if (rowl == row&&coll == col){
-				continue;
-			}
-			if (mine_map[rowl][coll] == '*'){
-				mine++;
-			}
-		}
-		show_map[row][col] = '0' + mine;
-	}
-}
-//提示用户输入坐标
-int playergame()
-{
-	while (1)
-	{
-		int row = 0;
-		int col = 0;
-
-		printf("请你输入一个坐标");
-		scanf("%d %d", &row, &col);
-
-		if (row<0 || row>ROW || col<0 || col>COL)
-		{
-			printf("你输入的不正确，请重新输入");
-			continue;
-		}
-
-		if (mine_map[row][col] == '*')
-		{
-			printf("游戏结束\n");
-			return 1;
-		}
-		else
-		{
-			updateshowmap(row, col);
-			++not_mine_count;
-		}
-
-		if (not_mine_count == ROW*COL - mine_count)
-		{
-			printf("扫雷结束\n");
-			printf("恭喜通关");
-			PrtMap(0);
-			return 1; 
-		}
-		return 0;
-	}
-}
-int main(){
-	//1.先打印菜单，判断是否进入游戏
-	if (menu()){
-		//2.打印show地图
-		PrtMap(1);
-		//3.布置雷阵
-		PutMine();
-		while (1){
-			PrtMap(1);
-		//4.让玩家做出选择
-		int result = playergame();
-		//5.判断游戏是否结束
-		if (result == 1){
-			break;
-		}
-		//7.如果没有回到第四步
-	}
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-{
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	srand(time(0));
-	if (menu()){
-		init();
-		PrtMap(1);
-		//埋雷
-		PutMine();
-		PrtMap(0);
-	}
-	system("pause");
-	return 0;
-}
