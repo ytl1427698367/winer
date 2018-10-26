@@ -180,4 +180,25 @@
 //	system("pause");
 //
 //}
+//判断一个数是否为偶数/若是则返回1，若否则返回0；
+int even(int n)
+{
 
+	if (n % 2 == 0)
+		return 1;
+	else
+		return 0;
+
+}
+int main()
+{
+	int num, k;
+	printf("请输入一个数");
+	scanf("%d", &num);
+	k=even(num);
+	if (k = 0)
+		printf("这个数是偶数");
+	else
+		printf("这个数是奇数");
+	system("pause");
+}
