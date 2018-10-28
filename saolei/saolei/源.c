@@ -83,25 +83,27 @@ void PutMine(){
 		mine_map[row][col] = '*';
 	}
 }
-//void endmap()
-//{
-//	int row=0, col=0, row1=0, col1=0;
-//	while (mine_map[row][col] == '*')
-//	{
-//          for (int rowl = row - 1; rowl < row + 2; rowl++)
-//			{
-//				for (int coll = col - 1; coll < col + 2; coll++)
-//				{
-//					if (rowl == row&&coll == col)
-//					{
-//						continue;
-//					}printf("%c", mine_map[row1][col1]);
-//				}
-//			}
-//	
-//		
-//	}
-//}
+void endmap()
+{
+	int row = 0, col = 0, row1 = 0, col1 = 0, minecount=0;
+	while (mine_map[row][col] == '*')
+	{
+		minecount++;
+          for (int rowl = row - 1; rowl < row + 2; rowl++)
+			{
+				for (int coll = col - 1; coll < col + 2; coll++)
+				{
+					if (rowl == row&&coll == col)
+					{
+						continue;
+					}
+				}
+			}
+	
+		  mine_map[row1][col1] = '0'+minecount;
+		  printf("%c", mine_map[row1][col1]);
+	}
+}
 //如果扫雷没有结束，则要统计当前位置周围雷的个数
 void updateshowmap(int row, int col)
 {
@@ -148,6 +150,7 @@ int playergame()
 
 			printf("游戏结束\n");
 			PrtMap(0);
+			endmap(row,col);
 			return 1;
 		}
 		else
@@ -185,7 +188,7 @@ int main(){
 			
 			if (result == 1)
 			{
-				//endmap();
+				endmap();
 				break;
 			}
 			//7.如果没有回到第四步
