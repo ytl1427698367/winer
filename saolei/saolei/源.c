@@ -1,8 +1,9 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 //#include<cnoio.h>
-#define mine_count 10
+#define mine_count 1
 #define  ROW 10
 #define  COL 10
 char mine_map[ROW + 2][COL + 2];//地图初始化，有雷
@@ -47,6 +48,19 @@ void PrtMap(int n)//如果输出show地图 n=1；如果输出mine地图 n=0
 {
     int row;
 	int col;
+	//边框
+	for (row = 0, col = 0; col < COL + 2; col++){
+		show_map[row][col] = ' ';
+	}
+	for (row = 0, col = 0; row < ROW + 2; row++){
+		show_map[row][col] = ' ';
+	}
+	for (row = ROW + 1, col = 0; col < COL + 2; col++){
+		show_map[row][col] = ' ';
+	}
+	for (col = COL + 1, row = 0; row < ROW + 2; row++){
+		show_map[row][col] = ' ';
+	}
 	//先打印第一行
 	for (col = 0; col <= COL; col++){
 		printf("%02d ", col);
@@ -71,6 +85,23 @@ void PrtMap(int n)//如果输出show地图 n=1；如果输出mine地图 n=0
 		printf("\n");
 	}
 }
+void OnePuls(int row, int col){
+	int rowl;
+	int coll;
+	for (rowl = row - 1; rowl < row + 2; rowl++){
+		for (coll = col - 1; coll < col + 2; coll++){
+			if (mine_map[rowl][coll]=='*'){
+				continue;
+			}
+			if (mine_map[rowl][coll] == ' '){
+				mine_map[rowl][coll] = '1';
+			}
+			else{
+				mine_map[rowl][coll] += 1;
+			}
+		}
+	}
+}
 void PutMine(){
 	//埋雷
 	for (int count = 0; count < mine_count; count++){
@@ -81,49 +112,21 @@ void PutMine(){
 			col = rand() % COL + 1;
 		}
 		mine_map[row][col] = '*';
+		OnePuls(row,col);
 	}
 }
-void endmap()
-{
-	int row = 0, col = 0, row1 = 0, col1 = 0, minecount=0;
-	while (mine_map[row][col] == '*')
-	{
-		minecount++;
-          for (int rowl = row - 1; rowl < row + 2; rowl++)
-			{
-				for (int coll = col - 1; coll < col + 2; coll++)
-				{
-					if (rowl == row&&coll == col)
-					{
-						continue;
-					}
-				}
-			}
-	
-		  mine_map[row1][col1] = '0'+minecount;
-		  printf("%c", mine_map[row1][col1]);
-	}
-}
-//如果扫雷没有结束，则要统计当前位置周围雷的个数
+
 void updateshowmap(int row, int col)
 {
-	int mine = 0;
-	//统计周围雷的数目
-	for (int rowl = row - 1; rowl < row + 2; rowl++){
-		for (int coll = col - 1; coll < col + 2; coll++){
-			if (rowl == row&&coll == col){
-				continue;
-			}
-			if (mine_map[rowl][coll] == '*'){
-				mine++;
+	show_map[row][col] = mine_map[row][col];
+	if (show_map[row][col] == ' '){
+		for (int rowl = row - 1; rowl < row + 2; rowl++){
+			for (int coll = col - 1; coll < col + 2; coll++){
+				if (show_map[rowl][coll] != ' '){
+					updateshowmap(rowl, coll);
+				}
 			}
 		}
-	}
-	if (mine != 0){
-		show_map[row][col] = '0' + mine;
-	}
-	else{
-		show_map[row][col] = ' ';
 	}
 }
 //提示用户输入坐标
@@ -147,23 +150,28 @@ int playergame()
 
 		if (mine_map[row][col] == '*')
 		{
-
-			printf("游戏结束\n");
 			PrtMap(0);
-			endmap(row,col);
+			printf("游戏结束\n");
 			return 1;
 		}
 		else
 		{
+		
 			updateshowmap(row, col);
-			++not_mine_count;
 		}
-
-		if (not_mine_count == ROW*COL - mine_count)
+		int nummine = 0;
+		for (row = 1; row <= ROW; row++){
+			for (col = 1; col <= COL; col++){
+				if (show_map[row][col] == '0'){
+					nummine++;
+				}
+			}
+		}
+		if ( nummine== mine_count)
 		{
-			printf("扫雷结束\n");
-			printf("恭喜通关");
 			PrtMap(0);
+			printf("扫雷结束\n");
+			printf("恭喜通关\n");
 			return 1;
 		}
 		return 0;
@@ -188,7 +196,7 @@ int main(){
 			
 			if (result == 1)
 			{
-				endmap();
+				
 				break;
 			}
 			//7.如果没有回到第四步
