@@ -6,6 +6,9 @@ package Sort;
  */
 //归并排序，也是分治算法
 public class Addupto {
+    public static void main(String[] args){
+        merg(new int[]{2,5,8,6,8,6,2},0,6,3);
+    }
     public static void mergeSort(int[] array,int low,int high){
         if(low==high-1){
             return;
