@@ -28,9 +28,20 @@ public class ArraySort {
         }
         System.out.println(Arrays.toString(array));
     }
+    private static void insertSort(int[] array){
+int i=0;
+        for( i=0;i<array.length;i++) {
+            int j;
+            for (j = i - 1; j >= 0 && array[i] < array[j]; j--) {
 
+            }
+            int pis = j + 1;
+            
+        }
+        }
     public static void main(String[] args) {
         int[] arrt=new int[]{21,12,21,12,21,2,25,6,564};
-        Sort(arrt);
+        //Sort(arrt);
+        insertSort(arrt);
     }
 }
