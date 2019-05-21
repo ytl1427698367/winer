@@ -4,7 +4,8 @@ package Sort;
  * Author：TaiLong
  * created:2019/4/27
  */
-public class Fast {
+//快速排序
+  public class Fast {
     private static int parition(int[] array,int left,int right){
         int begin=left;
         int end=right;
@@ -18,7 +19,9 @@ public class Fast {
             }
         }
         return begin;
+
     }
+
     public static void main(String[] args){
         parition(new int[]{12,23,23,53,5,6},0,5);
         System.out.println();
