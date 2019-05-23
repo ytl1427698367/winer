@@ -1,5 +1,7 @@
 package Sort;
 
+import java.util.Arrays;
+
 /**
  * Author：TaiLong
  * created:2019/4/27
@@ -18,12 +20,13 @@ package Sort;
                 end--;
             }
         }
+        System.out.println(Arrays. toString(array));
         return begin;
 
     }
 
     public static void main(String[] args){
         parition(new int[]{12,23,23,53,5,6},0,5);
-        System.out.println();
+
     }
 }
