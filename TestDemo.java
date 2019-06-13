@@ -1,32 +1,25 @@
+package com.practise;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 /**
  * Author：TaiLong
- * created:2018/12/8
+ * created:2019/6/12
  */
-enum color {
-    RED, GREEN, BLUE;
-}
-
-enum colors {
-    red("红色"), bule("蓝色");
-    private String title;
-
-    private colors(String title) {
-        this.title = title;
-    }
-
-    @Override
-    public String toString() {
-        return super.toString();
-    }
-}
-
 public class TestDemo {
-    public static void main(String[] args) {
-        System.out.println(color.RED.ordinal() + color.RED.name() + "\n" + color.BLUE.name());
-        System.out.println(colors.bule);
-        for (color temp : color.values()) {
-            System.out.println(temp.ordinal() + temp.name());
-        }
-    }
-}
 
+        public static void main(String[] args) {
+            List <String> list = new ArrayList();
+            list.add("hello");
+            list.add("hekko");
+            list.add("cvb");
+            Iterator<String> iterator=list.iterator();
+            while(iterator.hasNext()){
+                String str=iterator.next();
+                System.out.println(str);
+            }
+        }
+
+    }
