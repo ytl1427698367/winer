@@ -17,7 +17,7 @@ public class June32 {
             String str = sc.nextLine();
             String[] st = str.split(" ");
             int[] arr = new int[st.length];
-            for (int i = 0; i < arr.length; i++) {
+            for (int i = 0; i < arr.    length; i++) {
                 arr[i] = Integer.valueOf(st[i]);
 
             }
