@@ -1,3 +1,5 @@
+package com.SortColection;
+
 public interface IArrayList {
     // 增 / 删
 
