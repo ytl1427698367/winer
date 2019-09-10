@@ -1,26 +1,42 @@
-package com.xiangmuer;
-
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+package com.SortColection;
 
 /**
  * Author：TaiLong
- * created:2019/8/11
+ * created:2019/9/6
  */
-public class Main {
-    public static void main(String[] args)throws IOException{
-        String requestMessage="GET /thread.hrml?id=18&page=9 HTTP/1.1\r\n"
-                +"Host:www.bitvip.com\r\n"
-                +"Accept: text/html\r\n"+"\r\n";
-        InputStream is=new ByteArrayInputStream(requestMessage.getBytes());
-        Request request=Request.parse(is);
-        System.out.println(request.getMethod());
-        System.out.println(request.getHeaders());
-        System.out.println(request.getProtocol());
-        System.out.println(request.getRequestParams());
-        System.out.println(request.getUrl()
-        );
 
+        import java.sql.SQLOutput;
+        import java.util.*;
+
+class Main {
+    public static void main(String args[]) {
+        int M;
+        int S;
+        int T;
+        Scanner sc = new Scanner(System.in);
+        while (sc.hasNext()) {
+            M = sc.nextInt();
+            S = sc.nextInt();
+            T = sc.nextInt();
+            int time;
+            int instance;
+            int mofazhi;
+
+            if (M / 10 * T * 50 >= S) {
+                System.out.println("Yes");
+                System.out.println(M / 10);
+            } else {
+                mofazhi = M - M / 10;
+                time = T - M / 10;
+                instance = 50 * M / 10 + 50 * ((time + 1) / 2);
+                if (instance >= S) {
+                    System.out.println("Yes");
+                    System.out.println();
+                } else if (instance < S) {
+                    System.out.println("No");
+                    System.out.println(instance);
+                }
+            }
+        }
     }
 }
